@@ -1,0 +1,51 @@
+.slider
+  position relative
+  max-width 568px
+  margin 0 auto
+
+  &__inner
+    @media (max-width: 768px)
+      padding 0 50px
+
+  &__btn
+    border 0
+    width: 20px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    opacity: .8;
+    background none
+    font-size 50px
+    @media (max-width: 415px)
+      font-size 35px
+
+    &--prev
+      left: -25px
+      transform rotate(180deg)translate(0px, -6px)
+      -webkit-transform rotate(180deg)translate(0px, -6px)
+      -moz-transform rotate(180deg)translate(0px, -6px)
+      -o-transform rotate(180deg)translate(0px, -6px)
+      -ms-transform rotate(180deg)translate(0px, -6px)
+      &:after
+        content '\27A4'
+      @media (max-width: 768px)
+        left 36px
+
+    &--next
+       right: -25px;
+
+       &:before
+        content '\27A4'
+      @media (max-width: 768px)
+        right  36px
+
+    &:focus
+      outline 0
+
+    &:hover
+      cursor pointer
+
+  &__item
+    &:focus
+      outline none

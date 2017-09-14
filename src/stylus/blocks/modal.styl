@@ -18,10 +18,10 @@
   background rgba(0,0,0,0.8)
   border-radius 3px
   display none
-  @media (max-width: 415px) {
+  @media (max-width: 415px)
     max-height 335px
     max-width 240px
-  }
+
   &__title
     color rgba(255,194,0,1)
     &:after
@@ -35,6 +35,10 @@
   &__desc
     font-size 20px
     font-weight 400
+    @media (max-width: 768px)
+      font-size 18px
+    @media (max-height: 565px)
+      font-size 16px
 
   &__close
     position absolute
@@ -58,4 +62,15 @@
 
     &:after
       transform rotate(-45deg)
+
+  &--features
+    width 80%
+    max-width 700px
+    max-height 330px
+    @media (max-width: 768px)
+      max-height 400px
+    @media (max-width: 435px)
+      max-height 500px
+    @media (max-height: 565px)
+      max-height 424px
 

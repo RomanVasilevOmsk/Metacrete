@@ -7,6 +7,7 @@ var tinypng = require('gulp-tinypng');
 var autoprefixer = require('gulp-autoprefixer');
 var fileinclude = require('gulp-file-include');
 var concat = require('gulp-concat');
+var uglifycss = require('gulp-uglifycss');
 var mmq = require('gulp-merge-media-queries');
 
 gulp.task('autoprefixertask2', function () {
@@ -28,8 +29,8 @@ var paths = {
 
     src: {
 
-        html:'src/*.html',
-
+        html:'src/index.php',
+        //phpindex:'src/index.php',
         style:'src/stylus/app.styl',
         script:'src/js/app.js',
         contentImages: 'src/images/**/*.*',
@@ -55,6 +56,42 @@ var paths = {
 
 
 };
+//php
+gulp.task('php', function(){
+    gulp
+        .src([
+            'src/amo.php',
+            'src/class.phpmailer.php',
+            'src/PHPMailerAutoload.php',
+            'src/succes.php'
+        ])
+        .pipe(gulp.dest('dist/'))
+        .pipe(reload({stream: true}));
+});
+
+//phpmailer
+gulp.task('phpmailer', function(){
+    gulp
+        .src('src/phpmailer/**/*.*')
+        .pipe(gulp.dest('dist/phpmailer'))
+        .pipe(reload({stream: true}));
+});
+
+//sxgeo
+gulp.task('sxgeo', function(){
+    gulp
+        .src('src/sxgeo/**/*.*')
+        .pipe(gulp.dest('dist/sxgeo'))
+        .pipe(reload({stream: true}));
+});
+
+//roistat
+gulp.task('roistat', function(){
+    gulp
+        .src('src/roistat/**/*.*')
+        .pipe(gulp.dest('dist/roistat'))
+        .pipe(reload({stream: true}));
+});
 
 //html
 gulp.task('html', function(){
@@ -73,10 +110,10 @@ gulp.task('style', function(){
   return gulp
       .src(paths.src.style)
       .pipe(stylus())
-      //.pipe(base64('../images/base64'))
       .pipe(gulp.dest(paths.dist.css))
         .pipe(reload({stream:true}));
-})
+});
+
 
 // css
 gulp.task('style:vendor', function(){
@@ -84,14 +121,20 @@ gulp.task('style:vendor', function(){
         .src([
             'src/stylus/vendor/normalize.styl',
             'src/stylus/vendor/lightgallery.min.css',
-            'src/stylus/vendor/lg-transitions.min.css'
+            'src/stylus/vendor/lg-transitions.min.css',
+            'src/stylus/vendor/slick.css'
         ])
         .pipe(stylus())
+
         //.pipe(base64('../images/base64'))
+        .pipe(uglifycss({
+            "maxLineLen": 80,
+            "uglyComments": true
+        }))
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest(paths.dist.css))
         .pipe(reload({stream:true}));
-})
+});
 
 // JavaScript
 gulp.task('scripts', function(){
@@ -117,6 +160,15 @@ gulp.task('scripts:vendorLightgallery', function(){
             'src/js/lightgallery/*.js'
         ])
         .pipe(gulp.dest('dist/js/lightgallery'))
+        .pipe(reload({stream:true}));
+});
+
+gulp.task('scripts:vendorSlick', function(){
+    return gulp
+        .src([
+            'src/js/slick/*.js'
+        ])
+        .pipe(gulp.dest('dist/js/slick'))
         .pipe(reload({stream:true}));
 });
 
@@ -154,6 +206,11 @@ gulp.task('build', [
     'fonts',
     'files',
     'scripts:vendorLightgallery',
+    'scripts:vendorSlick',
+    'php',
+    'phpmailer',
+    'roistat',
+    'sxgeo',
     'mmq'
 ]);
 
