@@ -20,9 +20,9 @@ gulp.task('autoprefixertask2', function () {
 });
 
 gulp.task('tinypng', function () {
-    gulp.src('src/commons/images/**/*')
+    gulp.src('src/images/**/*.*')
         .pipe(tinypng('sHYF22n0Q3Cq55ie_Gl6ofCc1HsYcKoV'))
-        .pipe(gulp.dest('dist/images'));
+        .pipe(gulp.dest('src/images2'));
 });
 
 var paths = {
