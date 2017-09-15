@@ -80,6 +80,20 @@ $(document).ready(function(){
         $('#js-testimonials-slider').slick("slickNext");
     });
     //---------Carousel-----------//
+
+    $('form').submit(function(event) {
+        var required = $(this).find('input[required]');
+        var error = false;
+        for (var i = 0; i <= (required.length - 1); i++) {
+            if (required[i].value == '') {
+                required[i].style.borderColor = 'red';
+                error = true;
+            } else
+                required[i].style.borderColor = '#fcc500';
+        }
+        if (error) event.preventDefault();
+        else { dataLayer.push({ 'event': 'sendform' }); }
+    });
 });
 
 

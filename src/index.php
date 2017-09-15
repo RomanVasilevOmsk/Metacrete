@@ -44,7 +44,7 @@
 </div>
 @@include('partial/common/modal.html')
 
-<!---MODAL FEATURES--->
+<!---MODAL FEATURES!-->
 @@include('partial/common/features-modal/features-modal-destruction.html')
 @@include('partial/common/features-modal/features-modal-objects.html')
 @@include('partial/common/features-modal/features-modal-price.html')
@@ -52,16 +52,14 @@
 @@include('partial/common/features-modal/features-modal-availability.html')
 @@include('partial/common/features-modal/features-modal-approach.html')
 
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/app.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <script src="js/vendor.min.js"></script>
-
 <script src="js/lightgallery/lightgallery.min.js"></script>
 <script src="js/lightgallery/lg-thumbnail.min.js"></script>
 <script src="js/lightgallery/lg-fullscreen.min.js"></script>
-
 <script src="js/slick/slick.min.js"></script>
-
 <script src="js/app.js"></script>
 
 </body>

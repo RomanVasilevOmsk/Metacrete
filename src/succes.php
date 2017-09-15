@@ -8,7 +8,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TKKGPR8');</script>
-<!-- EndGoogleTagManager -->
+<!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,29 +21,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div style="border:10px solid #ced8cc; background:rgba(255,255,255,0.7); max-width:600px; margin: 0 auto; padding: 20px; margin-top: 40px; text-align:center;"><b style="font-size:40px;">Спасибо за заявку!</b> <br>В скором времени мы свяжемся с Вами!</div>
 </body>
-</html> 
+</html>	
 <?php
 if (isset($_POST["time_spend"])){
-  
+	
 $phone = trim($_POST["phone"]);
 $name = trim($_POST["name"]);
 $forma = trim($_POST["forma"]);
 $order_type = trim($_POST["order_type"]);
 $email = trim($_POST["email"]);
 $time_spend = trim($_POST["time_spend"]);
-$mix_choose = trim($_POST["mix_choose"]);
+$comment = trim($_POST["comment"]);
 
 
 require './PHPMailerAutoload.php';
-$mail = new PHPMailer;
-$mail->CharSet = 'UTF-8';
-$mail->setFrom('info@matacrete.ru','Metacrete');
-//$mail->addAddress('novoshickiy@gmail.com', 'Роман'); 
-$mail->addAddress('info@matacrete.ru', 'Metacrete'); 
-$mail->addAddress('karpov.s@metacrete.ru'); 
-$mail->addAddress('affcontext@mail.ru'); 
 
-$mail->Subject = 'Заявка с сайта Metacrete ('.$forma.')'; // тема письма
+$mail = new PHPMailer;
+
+$mail->CharSet = 'UTF-8';
+// $mail->setFrom('donotreply@metacrete.ru', 'Decor');
+//$mail->addAddress('css@media-group.biz'); 
+// $mail->addAddress('info@matacrete.ru', 'Metacrete'); 
+// $mail->addAddress('karpov.s@metacrete.ru'); 
+// $mail->addAddress('affcontext@mail.ru'); 
+// $mail->addAddress('affleads55@gmail.com');
+$mail->addAddress('zvezdarusy@gmail.com');
+$mail->Subject = 'Заявка с сайта ('.$forma.')'; // тема письма
 $mail->isHTML(true);
 
 for($ct=0;$ct<count($_FILES['userfile']['tmp_name']);$ct++)
@@ -59,9 +62,6 @@ for($ct=0;$ct<count($_FILES['userfile']['tmp_name']);$ct++)
 $message = "<table>";
 $amo_message = '';
 
-
-
-$comment[] = "";
 if(isset($_POST['name'])){
 $message .= '<tr><td>Имя:</td><td>'.trim($_POST['name']).'</td></tr>';
 $amo_message .='Имя: '.trim($_POST['name']).PHP_EOL;
@@ -86,9 +86,9 @@ if(isset($_POST['time_spend'])){
 $message .= '<tr><td>Время на сайте:</td><td>'.trim($_POST['time_spend']).'</td></tr>';
 $amo_message .='Время на сайте: '.trim($_POST['time_spend']).PHP_EOL;
 }
-if(isset($_POST['mix_choose'])){
-$message .= '<tr><td>Название смеси:</td><td>'.trim($_POST['mix_choose']).'</td></tr>';
-$amo_message .='Название смеси: '.trim($_POST['mix_choose']).PHP_EOL;
+if(isset($_POST['comment'])){
+$message .= '<tr><td>Комментарий:</td><td>'.trim($_POST['comment']).'</td></tr>';
+$amo_message .='Комментарий: '.trim($_POST['comment']).PHP_EOL;
 }
 $message .= "<tr><td colspan='2'>UTM метки</tr>";
 
@@ -124,13 +124,13 @@ $amo_message .='utm_content: '.trim($_POST['utm_content']).PHP_EOL;
 if(isset($_POST['mobile'])){
 if($_POST['mobile'] == "true")
 {
-  $message .= '<tr><td>Мобильный телефон:</td><td>Да</td></tr>';
-  $amo_message .='Мобильный телефон: Да'.PHP_EOL;;
+	$message .= '<tr><td>Мобильный телефон:</td><td>Да</td></tr>';
+	$amo_message .='Мобильный телефон: Да'.PHP_EOL;;
 }
 else
 {
-  $message .= '<tr><td>Мобильный телефон:</td><td>Нет</td></tr>';
-  $amo_message .='Мобильный телефон: Нет'.PHP_EOL;;
+	$message .= '<tr><td>Мобильный телефон:</td><td>Нет</td></tr>';
+	$amo_message .='Мобильный телефон: Нет'.PHP_EOL;;
 }
 }
 
@@ -143,12 +143,12 @@ try {
   $query = array_map(function($el){return explode('=', $el);}, explode('&', $parsed['query']));
   $object = array();
   foreach($query as $el){
-  $object[$el[0]] = $el[1];
+	$object[$el[0]] = $el[1];
   }
   if ($parsed['host'] == 'yandex.ru') {
-  $search_string = urldecode($object['text']);
-  $message .= '<tr><td>Точный запрос из Яндекса:</td><td>'.$search_string.'</td></tr>';
-  $amo_message .='Точный запрос из Яндекса: '.$search_string.PHP_EOL;
+	$search_string = urldecode($object['text']);
+	$message .= '<tr><td>Точный запрос из Яндекса:</td><td>'.$search_string.'</td></tr>';
+	$amo_message .='Точный запрос из Яндекса: '.$search_string.PHP_EOL;
   }
 } catch(Exception $e) {}
 }
@@ -168,8 +168,8 @@ $message .= "</table>";
 $mail->Body = $message;
 
 if ($time_spend  > 7){
-  $mail->send();
-  require "amo.php";
+    $mail->send();
+	require "amo.php";
 }
 
 }?>

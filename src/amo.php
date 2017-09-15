@@ -14,7 +14,6 @@ $utm_term = urldecode($utm_term);
 $utm_campaign = trim($_POST["utm_campaign"]);
 if ($utm_campaign == "||") $utm_campaign = "";
 $utm_campaign = urldecode($utm_campaign);
-
 //$true_phone = $phone;
 $utm_content = explode("|", $utm_content);
 $utm_content_arr = Array();
