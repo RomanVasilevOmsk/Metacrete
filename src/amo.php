@@ -259,7 +259,7 @@ $leads['request']['leads']['add']=array(
 		'id'=>37894,
 		'values'=>array(
 		  array(
-			'value'=>$order_type
+			'value'=>424027
 		  )
 		)
 	  ),
