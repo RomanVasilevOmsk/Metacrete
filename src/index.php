@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Metacrete</title>
+    <title>Metacrete - сухие ремонтные и подливочные смеси</title>
     @@include('partial/common/head.html')
 </head>
 <body>
