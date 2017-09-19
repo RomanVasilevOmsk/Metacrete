@@ -92,8 +92,10 @@ $(document).ready(function(){
                 required[i].style.borderColor = '#fcc500';
         }
         if (error) event.preventDefault();
-        else { dataLayer.push({ 'event': 'sendform' }); }
+        else { dataLayer.push({ 'event': 'sendaction' }); }
     });
+    $('.js-phone-wrap').click(function() { dataLayer.push({ 'event': 'sendaction' }); });
+    $('.js-email-link').click(function() { dataLayer.push({ 'event': 'sendaction' }); });
 });
 
 
