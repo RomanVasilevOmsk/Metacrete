@@ -63,7 +63,8 @@ gulp.task('php', function(){
             'src/amo.php',
             'src/class.phpmailer.php',
             'src/PHPMailerAutoload.php',
-            'src/succes.php'
+            'src/succes.php',
+            'src/cpc.php'
         ])
         .pipe(gulp.dest('dist/'))
         .pipe(reload({stream: true}));

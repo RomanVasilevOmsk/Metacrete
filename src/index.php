@@ -1,3 +1,14 @@
+
+<?
+//session_start();
+
+if (!empty($_SERVER['HTTP_REFERER'])) {
+    $_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
+}
+
+require_once 'cpc.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
