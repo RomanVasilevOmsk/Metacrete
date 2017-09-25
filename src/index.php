@@ -13,6 +13,8 @@ require_once 'cpc.php';
 <html lang="en">
 <head>
     <title>Metacrete - сухие ремонтные и подливочные смеси</title>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/app.css">
     @@include('partial/common/head.html')
 </head>
 <body>
@@ -63,8 +65,7 @@ require_once 'cpc.php';
 @@include('partial/common/features-modal/features-modal-availability.html')
 @@include('partial/common/features-modal/features-modal-approach.html')
 
-<link rel="stylesheet" href="css/vendor.css">
-<link rel="stylesheet" href="css/app.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/vendor.min.js"></script>
 <script src="js/lightgallery/lightgallery.min.js"></script>
