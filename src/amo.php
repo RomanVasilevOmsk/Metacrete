@@ -215,7 +215,7 @@ if( !empty( $city['city']) ){
     $leadNameCity ="[".$city['city']."] ";
 }
 else{
-    $leadNameCity = "[ГородХ] &nbsp;";
+    $leadNameCity = "[ГородХ] ";
 }
 
 $lead_name = $leadNameCity;
