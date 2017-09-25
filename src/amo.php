@@ -211,7 +211,14 @@ if ($copy == 1){
 else
 	$text_copy = '';
 
-$lead_name = "Заявка с сайта";
+if( !empty( $city['city']) ){
+    $leadNameCity ="[".$city['city']."] ";
+}
+else{
+    $leadNameCity = "[ГородХ] &nbsp;";
+}
+
+$lead_name = $leadNameCity;
 $roistat=isset($_COOKIE['roistat_visit']) ? $_COOKIE['roistat_visit'] : null;
 
 										

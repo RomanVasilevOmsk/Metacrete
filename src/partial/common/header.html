@@ -1,4 +1,5 @@
 <!-- begin header  -->
+
 <header class="header">
     <div class="header__inner">
         <section class="header__item header__item--left">
@@ -7,7 +8,16 @@
             </a>
         </section>
         <section class="header__item header__item--desc">
-            <p class="header__desc">Сухие ремонтные и подливочные смеси</p>
+            <p class="header__desc">Сухие ремонтные и подливочные смеси в г.<?php
+                try {
+                        if ($_SERVER['REMOTE_ADDR']) {
+                             require_once 'sxgeo/SxGeo.php';
+                            $geo = new SxGeo('sxgeo/SxGeoCity.dat');
+                            $city = $geo->getCity($_SERVER['REMOTE_ADDR']);
+                            echo $message .=$city['city'];
+                        }
+                    } catch(Exception $e){}
+                ?></p>
         </section>
         <section class="header__item header__item--right">
             <a class="header__phone roistat-phone-tel js-phone-wrap" href="tel:+74997042796"><span class="roistat-phone">8 (499) 704-27-96</span></a>
