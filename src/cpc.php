@@ -43,7 +43,7 @@
 
         $isWeekend = $now->format('N') >= 6;
         if ($now >= $morning && $now < $evening && !$isWeekend) {
-            return 'Перезвоним в течение 4 минут';
+            return 'Перезвоним в течение 4 минут.';
         } else {
             return 'Мы перезвоним Вам в рабочее время.';
         }
